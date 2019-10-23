@@ -20,6 +20,7 @@ public class Role implements Serializable {
 	@GenericGenerator(name = "native", strategy="native")
 	private Long id;
 	
+	
 	@Column
 	private String name;
 	
