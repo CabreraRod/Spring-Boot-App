@@ -13,6 +13,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import javax.persistence.JoinColumn;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -30,18 +33,25 @@ public class User implements Serializable {
 	private Long id;
 	
 	@Column
+	@NotBlank
 	private String firstName;
 	
 	@Column
+	@NotBlank
 	private String lastName;
 	
 	@Column(unique = true)
+	@NotBlank
+	@Email
 	private String email;
 	
 	@Column(unique = true)
+	@NotBlank
 	private String username;
 	
 	@Column
+	@NotBlank
+	@Size(min=4, max=16, message="Su contraseña debe tener mas de 8 caracteres")
 	private String password;
 	
 	@Transient
